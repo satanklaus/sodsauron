@@ -1,0 +1,11 @@
+{% extends 'eye/base.html' %}
+{% load i18n %}
+
+{% block sauronsays %}
+{% trans 'info' %}
+{% endblock %}
+
+{% block body_block %}
+{% include 'eye/menu.html' %}
+<H3>{% trans 'changed successfully:' %} <a href={%url "eye:url_itemn" info_number%}>{{ info_number }}</a></H3>
+{% endblock %}

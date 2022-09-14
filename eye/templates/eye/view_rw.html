@@ -1,0 +1,92 @@
+{% extends 'eye/base.html' %}
+{% load i18n %}
+{% load static %}
+
+
+{% block scripting %} 
+<script src="{% static 'eye/js/view_rw.js'  %}"></script>
+{% endblock %}
+{% block menu_block %}
+{% include 'eye/menu.html' %}
+{% endblock %}
+
+{% block sauronsays %}{% trans 'change item' %} #{{pkid}} {% endblock %}
+{% block body_block %}
+
+
+{% if pkid %}
+	<form id="viewrw-form"  action="/commit/{{pkid}}/" method="post">
+{% else %}
+	<form id="viewrw-form"  action="/commit/" method="post">
+{%endif%}
+	<div class="row">
+		<h3>{% trans 'Primary info:' %}</h3>
+	{% csrf_token %}
+	<table>
+	{% for field in form.visible_fields %}
+	<tr>
+		<th>{{field.label_tag}}</th>	
+	   {% comment %}
+	   <th>{{ field.label_tag }}</th>	
+	   {% endcomment %}
+	   <td>{{ field }}</td>
+	   {% if field.id_for_label == "id_organization" %}
+	   <td><span></span><a class="open-modal navbar-link" id="modal_{{ field.id_for_label }}"><i class="fa-solid fa-circle-plus fa-2x"></i></a> </td>
+	   {% elif field.id_for_label ==  "id_orgbranch"%}
+	   <td><span></span><a class="open-modal navbar-link" id="modal_{{ field.id_for_label }}"><i class="fa-solid fa-circle-plus fa-2x"></i></a> </td>
+	   {% elif field.id_for_label == "id_location" %}
+	   <td><span></span><a class="open-modal navbar-link" id="modal_{{ field.id_for_label }}"><i class="fa-solid fa-circle-plus fa-2x"></i></a> </td>
+	   {% elif field.id_for_label == "id_itemtype" %}
+	   <td><span></span><a class="open-modal navbar-link" id="modal_{{ field.id_for_label }}"><i class="fa-solid fa-circle-plus fa-2x"></i></a> </td>
+	   {% elif field.id_for_label == "id_model" %}
+	   <td><span></span><a class="open-modal navbar-link" id="modal_{{ field.id_for_label }}"><i class="fa-solid fa-circle-plus fa-2x"></i></a> </td>
+	   {% else %} 
+	      <td>&nbsp;</td>
+	   {% endif %}
+	   </td>
+	   </td>	
+	</tr>
+	{% endfor %}
+        </table>
+	</div>
+	{%comment%}
+	<div><a class="navbar-link" href="/qrprint1/?item_id={{pkid}}"><i class="fa-solid fa-print fa-2x"></i><i class="fa-solid fa-qrcode fa-2x"></i></a></div>
+	{%endcomment%}
+	<div><a class="navbar-link" href={%url "eye:url_qrprint1"%}/?iterm_id={{pkid}}><i class="fa-solid fa-print fa-2x"></i><i class="fa-solid fa-qrcode fa-2x"></i></a></div>
+	<input type="submit" class="button-primary" value="{% trans 'SUBMIT' %}">
+</form>
+	<div class="row" id="additional_info">
+	<hr>
+	<h3>{% trans 'Additional info:' %}</h3>
+
+
+	{% if additional_form %}
+	<form id="viewrw-printer" action="/{{additional_form.action}}/{{pkid}}/" method="post">
+	{% csrf_token %}
+	<table>
+	{% for additional_field in additional_form.visible_fields %}
+	<tr>
+		<th>{{additional_field.label_tag}}</th>
+	   	<td>{{ additional_field }}</td>
+	</tr>
+
+	{% endfor %}
+        </table>
+	<input type="submit" class="button-primary" value="{% trans 'SUBMIT' %}">
+	</form>
+	{%endif%}
+
+	<hr>
+	</div>
+
+
+	<div class="row" id="events_container">
+		<h3>{% trans 'Events' %}: <a class="open-modal navbar-link" id="modal_id_event/{{pkid}}"><i class="fa-solid fa-circle-plus fa-2x"></i></a> </h3>
+		<ul id="events_list">
+		</ul>
+	</div>
+{% endblock %}
+
+{% block modal %}
+{% include 'eye/modal.html' %}
+{% endblock %}

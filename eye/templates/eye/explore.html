@@ -1,0 +1,83 @@
+{% extends 'eye/base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block scripting %}
+<script src="{% static 'eye/js/explore.js'  %}"></script>
+{% endblock %}
+
+{% block menu_block %}
+{% include 'eye/menu.html' %}
+{% endblock %}
+
+{% block sauronsays %}
+{% trans 'explore db, please' %}
+{% endblock %}
+
+{% block body_block %}
+<form id="explore-form" class="non-modal-form" action="/explore/" method="post">
+          <div class="row">
+          {% csrf_token %}
+	  <table>
+		  {% for field in form.visible_fields %}
+		  <tr>
+			  <th>{% trans field.label_tag %}</th>	
+			<td>{{ field }}</td>
+			</td>
+			</td>	
+		  </tr>
+		  {% endfor %}
+	  </table>
+
+	  <input class="button-primary" type="submit" value="{% trans 'FILTER' %}">
+	  <hr>
+	  <table>
+		  <tr>
+			  <th>{% trans 'ID'%}</th>
+			  <th>{% trans 'Organization'%}</th>
+			  <th>{% trans 'Orgbranch'%}</th>
+			  <th>{% trans 'Location'%}</th>
+			  <th>{% trans 'Itemtype'%}</th>
+			  <th>{% trans 'Model'%}</th>
+			  <th>{% trans 'Description'%}</th>
+			  <th>{% trans 'Served'%}</th>
+		  </tr>
+	  {% for record in records %}
+	  	<tr>
+			<td><a href={%url 'eye:url_itemn' record.id%}  class="navbar-link" > {{ record.id }} </a></td>
+			{% if record.organization == "EMPTY" %}
+				<td class='alert'>{{record.organization}}</td>
+			{% else %}
+				<td>{{ record.organization }}</td>
+			{% endif %}
+			{% if record.orgbranch == "EMPTY" %}
+				<td class='alert'>{{record.orgbranch}}</td>
+			{% else %}
+				<td>{{ record.orgbranch }}</td>
+			{% endif %}
+			{% if record.location == "EMPTY" %}
+				<td class='alert'>{{record.location}}</td>
+			{% else %}
+				<td>{{ record.location }}</td>
+			{% endif %}
+			{% if record.itemtype == "EMPTY" %}
+				<td class='alert'>{{record.itemtype}}</td>
+			{% else %}
+				<td>{{ record.itemtype }}</td>
+			{% endif %}
+			{% if record.model == "EMPTY" %}
+				<td class='alert'>{{record.model}}</td>
+			{% else %}
+				<td>{{ record.model }}</td>
+			{% endif %}
+			<td>{{ record.description }}</td>
+			<td>{{ record.served }}</td>
+		</tr>
+	  {% endfor %}
+	  </table>
+          </div>
+{% endblock %}
+
+{% block modal %}
+{% include 'eye/modal.html' %}
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends 'eye/base.html' %}
+{% load i18n %}
+{% load static %}
+
+
+{% block scripting %} 
+<script src="{% static 'eye/js/create.js'  %}"></script>
+{% endblock %}
+{% block menu_block %}
+{% include 'eye/menu.html' %}
+{% endblock %}
+
+{% block sauronsays %}{% trans 'change item' %}{% endblock %}
+{% block body_block %}
+
+{% if pkid %}
+	<form id="createitem-form"  action="/commit/{{pkid}}/" method="post">
+{% else %}
+	<form id="createitem-form"  action="/commit/" method="post">
+{%endif%}
+	<div class="row">
+	{% csrf_token %}
+	   {% comment %}
+	<div><a href="/qrprint1/?item_id={{pkid}}">{% trans 'PRINT QR for this item' %}</a></div>
+	   {% endcomment %}
+	<table>
+	{% for field in form.visible_fields %}
+	<tr>
+		<th>{{field.label_tag}}</th>	
+	   {% comment %}
+	   <th>{{ field.label_tag }}</th>	
+	   {% endcomment %}
+	   <td>{{ field }}</td>
+	   {% if field.id_for_label == "id_organization" %}
+	   <td><span></span><a class="open-modal navbar-link" id="modal_{{ field.id_for_label }}"><i class="fa-solid fa-circle-plus fa-2x"></i></a> </td>
+	   {% elif field.id_for_label ==  "id_orgbranch"%}
+	   <td><span></span><a class="open-modal navbar-link" id="modal_{{ field.id_for_label }}"><i class="fa-solid fa-circle-plus fa-2x"></i></a> </td>
+	   {% elif field.id_for_label == "id_location" %}
+	   <td><span></span><a class="open-modal navbar-link" id="modal_{{ field.id_for_label }}"><i class="fa-solid fa-circle-plus fa-2x"></i></a> </td>
+	   {% elif field.id_for_label == "id_itemtype" %}
+	   <td><span></span><a class="open-modal navbar-link" id="modal_{{ field.id_for_label }}"><i class="fa-solid fa-circle-plus fa-2x"></i></a> </td>
+	   {% elif field.id_for_label == "id_model" %}
+	   <td><span></span><a class="open-modal navbar-link" id="modal_{{ field.id_for_label }}"><i class="fa-solid fa-circle-plus fa-2x"></i></a> </td>
+	   {% else %} 
+	      <td>&nbsp;</td>
+	   {% endif %}
+	   </td>
+	   </td>	
+	</tr>
+	{% endfor %}
+        </table>
+	</div>
+	<input class="button-primary" type="submit" value="{% trans 'SUBMIT' %}">
+</form>
+	   {% comment %}
+	<div class="row" id="events_container">
+		<h3>{% trans 'Events' %}:</h3>
+		{%if events %}
+		<ul id="events_list">
+		{%for event in events %}
+			<li><a href=/events/{{event.pk}} >event{{event.pk}}</a> - {{event.eventtype}} - {{event.date}}</li>
+		{%endfor %}
+		</ul>
+		{%else %}
+		<p>{% trans 'No events defined, yet' %}</p>
+		{%endif%}
+		<a class="open-modal navbar-link" id="modal_id_event/{{pkid}}">{% trans 'ADD EVENT' %}</a> 
+	</div>
+	   {% endcomment %}
+{% endblock %}
+
+{% block modal %}
+{% include 'eye/modal.html' %}
+{% endblock %}

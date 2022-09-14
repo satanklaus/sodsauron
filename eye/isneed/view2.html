@@ -1,0 +1,22 @@
+{% extends 'eye/base.html' %}
+
+{% block scripting %} 
+{% endblock %}
+
+{% block menu_block %}
+{% include 'eye/menu.html' %}
+{% endblock %}
+
+{% block sauronsays %}view and edit your item {% endblock %}
+{% block body_block %}
+<form action="/commit/{{ pkid }}/" method="post">
+	<div class="row">
+	{% csrf_token %}
+	<table>
+        {{ form.as_table }}
+        </table>
+	</div>
+        <input type="submit" value="> SUBMIT">
+
+</form>
+{% endblock %}

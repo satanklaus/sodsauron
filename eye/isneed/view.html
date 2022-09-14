@@ -1,0 +1,24 @@
+{% extends 'eye/base.html' %}
+
+{% block scripting %} 
+{% endblock %}
+
+{% block sauronsays %} view your item{% endblock %}
+
+{% block menu_block %}
+{% include 'eye/menu.html %}
+{% endblock %}
+
+
+{% block body_block %}
+	<div class="row">
+	{% csrf_token %}
+	Debug: {{ debug }}<hr>
+	Location: {{ location }}<hr>
+	Branch: {{ orgbranch }}<hr>
+	Org: {{ organization }}<hr>
+	Type: {{ itemtype }}<hr>
+	Model: {{ model }}<hr>
+	Desc: {{ description }}<hr>
+	</div>
+{% endblock %}

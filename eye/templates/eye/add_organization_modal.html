@@ -1,0 +1,18 @@
+{% extends 'eye/base_modal.html' %}
+
+{% block title %}
+{% endblock %}
+
+{% block body_block %}
+{% comment %}
+<form action="/modal/add_organization/" method="post" id="modal_form">
+{% endcomment %}
+<form action={%url "eye:url_modal_add_organization"%} method="post" id="modal_form">
+   <div class="row">
+	{% csrf_token %}
+      <table>
+         {{ form.as_table }}
+      </table>
+   </div>
+</form>
+{% endblock %}

@@ -1,0 +1,186 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-25 16:05+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: eye/forms.py:13
+msgid "Number of QR codes:"
+msgstr "Количество кодов:"
+
+#: eye/forms.py:16 eye/forms.py:131
+msgid "Username"
+msgstr "Пользователь"
+
+#: eye/forms.py:17 eye/forms.py:132
+msgid "Password"
+msgstr "Пароль"
+
+#: eye/forms.py:20 eye/forms.py:66 eye/forms.py:98
+#: eye/templates/eye/explore.html:37 eye/templates/eye/view_ro.html:15
+msgid "Organization"
+msgstr "Организация"
+
+#: eye/forms.py:31
+msgid "number of printz:"
+msgstr "Количество отпечатков:"
+
+#: eye/forms.py:37
+msgid "Test result:"
+msgstr "Результат тестирования"
+
+#: eye/forms.py:39
+msgid "Last test date:"
+msgstr "Дата последнего тестирования"
+
+#: eye/forms.py:45
+msgid "Last battery replace date:"
+msgstr "Дата последней замены батареи"
+
+#: eye/forms.py:56
+#, fuzzy
+#| msgid "Last test date:"
+msgid "Last service date:"
+msgstr "Дата последней профилактики"
+
+#: eye/forms.py:67 eye/forms.py:99 eye/templates/eye/explore.html:38
+#: eye/templates/eye/view_ro.html:16
+msgid "Orgbranch"
+msgstr "Филиал"
+
+#: eye/forms.py:73 eye/forms.py:100 eye/templates/eye/explore.html:40
+msgid "Itemtype"
+msgstr "Тип"
+
+#: eye/forms.py:79
+#, fuzzy
+#| msgid "Events"
+msgid "Eventtype"
+msgstr "События"
+
+#: eye/forms.py:81
+msgid "Date"
+msgstr "Дата"
+
+#: eye/forms.py:101 eye/templates/eye/explore.html:39
+#: eye/templates/eye/view_ro.html:17
+msgid "Location"
+msgstr "Кабинет"
+
+#: eye/forms.py:102 eye/templates/eye/explore.html:43
+#: eye/templates/eye/view_ro.html:18
+msgid "Served"
+msgstr "На обслуживании"
+
+#: eye/forms.py:103 eye/templates/eye/explore.html:41
+msgid "Model"
+msgstr "Модель"
+
+#: eye/forms.py:105 eye/templates/eye/explore.html:42
+#: eye/templates/eye/view_ro.html:19
+msgid "Description"
+msgstr "Комментарий"
+
+#: eye/forms.py:114
+msgid "Show empty:"
+msgstr "Показывать резерв:"
+
+#: eye/forms.py:115
+#, fuzzy
+#| msgid "Organization:"
+msgid "Organization ID:"
+msgstr "Организация:"
+
+#: eye/templates/eye/create.html:13 eye/templates/eye/view_rw.html:13
+msgid "change item"
+msgstr "правка информации"
+
+#: eye/templates/eye/create.html:55 eye/templates/eye/view_rw.html:54
+#: eye/templates/eye/view_rw.html:73
+msgid "SUBMIT"
+msgstr "сохранить"
+
+#: eye/templates/eye/created.html:5
+msgid "info"
+msgstr "Информация"
+
+#: eye/templates/eye/explore.html:14
+msgid "explore db, please"
+msgstr "список оборудования"
+
+#: eye/templates/eye/explore.html:32
+msgid "FILTER"
+msgstr "фильтровать"
+
+#: eye/templates/eye/explore.html:36 eye/templates/eye/view_ro.html:14
+msgid "ID"
+msgstr "Идентификатор"
+
+#: eye/templates/eye/home.html:4
+msgid "welcome"
+msgstr "Добро пожаловать"
+
+#: eye/templates/eye/login.html:12
+msgid "Authenticate, please"
+msgstr "Авторизуйтесь"
+
+#: eye/templates/eye/login.html:24
+msgid "login"
+msgstr "вход"
+
+#: eye/templates/eye/menu.html:24
+msgid "admin"
+msgstr "админ."
+
+#: eye/templates/eye/view_ro.html:10
+msgid "view item RO"
+msgstr "Просмотр техники"
+
+#: eye/templates/eye/view_rw.html:23
+msgid "Primary info:"
+msgstr "Основная информация:"
+
+#: eye/templates/eye/view_rw.html:58
+msgid "Additional info:"
+msgstr "Дополнительная информация:"
+
+#: eye/templates/eye/view_rw.html:82
+msgid "Events"
+msgstr "События"
+
+#~ msgid "No events defined, yet"
+#~ msgstr "События не заведены"
+
+#~ msgid "ADD EVENT"
+#~ msgstr "Доб. событие"
+
+#~ msgid "new"
+#~ msgstr "нов."
+
+#~ msgid "explore"
+#~ msgstr "просмотр"
+
+#~ msgid "qr"
+#~ msgstr "qr-коды"
+
+#~ msgid "logout"
+#~ msgstr "выход"
+
+#~ msgid "PRINT QR for this item"
+#~ msgstr "Распечатать QR для этой техники"

@@ -1,0 +1,11 @@
+<h3>Events:</h3>
+{%if events %}
+<ul id="events_list">
+{%for event in events %}
+	<li><a href=/events/{{event.pk}} >event{{event.pk}}</a> - {{event.eventtype}} - {{event.date}}</li>
+{%endfor %}
+</ul>
+{%else %}
+<p>No events defined, yet</p>
+{%endif%}
+<a class="open-modal navbar-link" id="modal_id_event/{{pkid}}">>ADD EVENT</a> 

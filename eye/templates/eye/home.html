@@ -1,0 +1,11 @@
+{% extends 'eye/base.html' %}
+{%load i18n %}
+
+{%block sauronsays %} {% trans 'welcome' %}, {{user.first_name}} {% endblock %}
+
+{%block body_block %}
+{%endblock %}
+
+{% block menu_block %}
+{% include 'eye/menu.html' %}
+{% endblock %}

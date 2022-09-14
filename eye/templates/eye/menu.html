@@ -1,0 +1,33 @@
+{% load i18n %}
+<nav class="navbar">
+        <div class="row">
+                <div class="six columns">
+                <ul class="navbar-list">
+		{% if user.is_authenticated %}
+		<li class="navbar-item"> <a href="{% url 'eye:url_create' %}"  class="navbar-link" ><i class="fa-solid fa-circle-plus fa-2x"></i></a></li>
+		<li class="navbar-item"> <a href="{% url 'eye:url_explore' %}"  class="navbar-link" ><i class="fa-solid fa-magnifying-glass fa-2x"></i></a> </li>
+		<li class="navbar-item"> <a class="open-modal navbar-link" id="qrcodes" >             <i class="fa-solid fa-qrcode fa-2x"></i></a></li>
+		{% else %}
+		<li></li>
+		{% endif %}
+                </ul>
+                </div>
+                <div class="six columns">
+                <ul class="navbar-list">
+		{% if user.is_authenticated %}
+		<li class="navbar-item" style="float: right;" > <a href="{% url 'eye:url_logout' %}"  class="navbar-link"><i class="fa-solid fa-arrow-right-from-bracket fa-2x"></i></a> </li>
+		{% if user.is_superuser %}
+		<li class="navbar-item" style="float: right;"> <a href={% url 'admin:index'%}  class="navbar-link" ><i class="fa-solid fa-hashtag fa-2x"></i> </a> </li>
+    		{% endif %}
+		{% else %}
+		{% if request.get_full_path == "/login/"%}
+		<li class="navbar-item" style="float: right;"> <a href={% url 'eye:url_login' %}  class="navbar-link" ><i class="fa-solid fa-arrow-right-to-bracket fa-2x"></i></a> </li>
+
+		{% else %}
+		<li class="navbar-item" style="float: right;"> <a href={%url 'eye:url_login'%} +"?sendmeto={{request.get_full_path}}"  class="navbar-link" ><i class="fa-solid fa-arrow-right-to-bracket fa-2x"></i></a> </li>
+		{% endif %}
+		{% endif %}
+                </ul>
+                </div>
+        </div>
+</nav>

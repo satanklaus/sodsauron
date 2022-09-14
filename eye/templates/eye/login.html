@@ -1,0 +1,23 @@
+{% extends 'eye/base.html' %}
+{% load i18n %}
+
+{% block scripting %} 
+{% endblock %}
+{% block menu_block %}
+{% endblock %}
+
+{%block sauronsays%}{% trans 'Authenticate, please'%} {%endblock %}
+
+{% block body_block %}
+sendmeto: {{sendmeto}}
+<form action={%url "eye:url_login" %} method="post">
+	<div class="row">
+	{% csrf_token %}
+	{%if sendmeto %}
+		<input type='hidden' name='sendmeto' value="{{sendmeto}}">
+	{%endif%}
+	{{ form }}
+	</div>
+	<input class="button-primary" type="submit" value="{%trans 'login'%}">
+</form>
+{% endblock %}

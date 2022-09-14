@@ -1,0 +1,27 @@
+{% extends 'eye/base.html' %}
+{% load i18n %}
+
+{% block scripting %} 
+{% endblock %}
+{% block menu_block %}
+{% include 'eye/menu.html' %}
+{% endblock %}
+
+{% block sauronsays %}{% trans 'view item RO' %}{% endblock %}
+{% block body_block %}
+	<div class="row">
+		<ul>
+			<li><b>{% trans 'ID'%}:</b> {{ ro_stats.id }}</li>
+			<li><b>{% trans 'Organization'%}:</b> {{ ro_stats.organization }}</li>
+			<li><b>{% trans 'Orgbranch'%}:</b> {{ ro_stats.orgbranch }}</li>
+			<li><b>{% trans 'Location'%}:</b> {{ ro_stats.location }}</li>
+			<li><b>{% trans 'Type'%}:</b> {{ ro_stats.type }}</li>
+			<li><b>{% trans 'Model'%}:</b> {{ ro_stats.model }}</li>
+			<li><b>{% trans 'Served'%}:</b> {{ ro_stats.served }}</li>
+			<li><b>{% trans 'Description'%}:</b> {{ ro_stats.description }}</li>
+		</ul>
+	</div>
+{% endblock %}
+
+{% block modal %}
+{% endblock %}
